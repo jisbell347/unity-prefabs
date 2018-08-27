@@ -14,7 +14,16 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    if (Input.GetMouseButtonDown(0)) {
-	        Instantiate(bulletPrefab);
-        }
+	        GameObject bulletObject = Instantiate(bulletPrefab);
+	        Bullet bullet = bulletObject.GetComponent<Bullet>();
+
+	        Vector3 shootingDirection = new Vector3(
+	            Random.Range(-0.15f, 0.15f),
+	            Random.Range(-0.1f, 0.1f),
+	            1
+	        );
+
+	        bullet.shootingDirection = shootingDirection.normalized;
+	    }
 	}
 }
